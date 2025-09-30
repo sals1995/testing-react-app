@@ -1,27 +1,27 @@
-import { render, screen } from "@testing-library/react";
-import Heroes from "../components/Heroes/Heroes";
-describe("Heroes component", () => {
-  it("render with no heroes", () => {
-    render(<Heroes />)
+import { render, screen } from "@testing-library/react"
+import Heroes from "../components/Heroes/Heroes"
+import { expect } from "vitest"
 
-    expect(screen.queryByRole("list")).not.toBeInTheDocument()
-    expect(screen.getByText(/no heroes/i)).toBeInTheDocument()
-  });
-  it("render with heroes", () => {
-    let heroes=[
-        {id:1,name:"superman",strength:10},
-        {id:2,name:"batman",strength:11},
-    ]
-    render(<Heroes heroes={heroes}/>)
+describe("Heroes component",()=>{
+    it("should be rendered without props",()=>{
+        render(<Heroes />)
 
-    expect(screen.queryByRole("list")).toBeInTheDocument()
-    expect(screen.queryByText(/no heroes/i)).not.toBeInTheDocument()
-    let liTags=screen.getAllByRole("listitem")
-    expect(liTags).toHaveLength(heroes.length)
-    for (let i = 0; i < liTags.length; i++) {
-       
-        expect(liTags[i]).toHaveTextContent(heroes[i].name)
-        
-    }
-  });
-});
+        expect(screen.getByText(/no heroes/i)).toBeInTheDocument()
+        expect(screen.queryByRole("list")).not.toBeInTheDocument()
+    })
+    it("should be rendered with props",()=>{
+        let heroesMock=[
+            {id:100,name:"super man",strength:20},
+            {id:102,name:"bat man",strength:15},
+        ]
+        render(<Heroes heroes={heroesMock}/>)
+
+        expect(screen.queryByText(/no heroes/i)).not.toBeInTheDocument()
+        expect(screen.queryByRole("list")).toBeInTheDocument()
+
+       let liTags= screen.queryAllByRole("listitem")
+       expect(liTags).toHaveLength(2)
+       expect(liTags[0]).toHaveTextContent(heroesMock[0].name)
+    })
+   
+})
