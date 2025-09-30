@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
-import "../components/Heroes/Heroes.css"
-import calculateHeroStrengthPower from "../utils/heroStrength"
+import "../../components/Heroes/Heroes.css"
+import calculateHeroStrengthPower from "../../utils/heroStrength"
 
 export default function HeroesFromAPI(){
 
