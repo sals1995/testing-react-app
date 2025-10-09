@@ -1,27 +1,31 @@
-import { render, screen } from "@testing-library/react"
-import Counter from "../components/Counter/Counter"
-import { beforeEach, expect } from "vitest"
-import userEvent from "@testing-library/user-event"
+import { render, screen } from "@testing-library/react";
+import Counter from "../components/Counter/Counter";
+import { beforeEach, expect, it } from "vitest";
+import userEvent from "@testing-library/user-event";
 
+describe("Counter component", () => {
+  beforeEach(()=>{
+     render(<Counter />)
+  })
+  it("should be rendered", () => {
+   
 
-describe("Counter component",()=>{
-    beforeEach(()=>{
-        render(<Counter />)
-    })
-    it("should be rendered",()=>{
-        
+    //access dom
 
-        let btns =screen.getAllByRole("button")
-        expect(btns).toHaveLength(3)
-        expect(screen.getByRole("heading")).toHaveTextContent(0)
-    })
-    it("should increase count after click btn+",async ()=>{
-       
+    expect(screen.getByRole("heading")).toHaveTextContent(0)
+    let btnTags=screen.getAllByRole("button")
+    expect(btnTags).toHaveLength(3)
+  });
+  it("should increase state after clicking btn +",async ()=>{
+    
+    //access btn +
+    let btnInc=screen.getByRole("button",{name:"Increment"}) //or // screen.getByText("+")
+    //fire click
+   await userEvent.click(btnInc)
+   await userEvent.click(btnInc)
+   await userEvent.click(btnInc)
+    //assert h1 ===> ++
+    expect(screen.getByRole("heading")).toHaveTextContent(3)
 
-        let btn =screen.getByRole("button",{name:"Increment"}) //screen.getByText("+")
-       await userEvent.click(btn)
-       await userEvent.click(btn)
-       await userEvent.click(btn)
-        expect(screen.getByRole("heading")).toHaveTextContent(3)
-    })
-})
+  })
+});

@@ -13,7 +13,6 @@ export default function HeroesFromAPI(){
       try {
         const response = await axios.get('http://localhost:3000/heroes');
         setHeroes(response.data);
-        console.log('response.data.value: ', response.data);
       } catch {
         setError('Failed to fetch heroes');
       }

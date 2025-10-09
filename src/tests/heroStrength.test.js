@@ -1,15 +1,15 @@
-import { describe, it, expect }from "vitest"
-import  calculateHeroStrengthPower from "../utils/heroStrength"
+import { describe, expect, it } from "vitest";
+import calculateHeroStrengthPower from "../utils/heroStrength";
 
 
-describe("heroStrength function",()=>{
-    it("should return '5 (weak)' when passing 5",()=>{
-        expect(calculateHeroStrengthPower(5)).toMatch(/weak/)
+describe("calculateHeroStrengthPower function",()=>{
+    it("should return includes 'weak' when passing strength=9",()=>{
+        expect(calculateHeroStrengthPower(9)).toMatch(/weak/i)
     })
-    it("should return '15 (strong)' when passing 15",()=>{
-        expect(calculateHeroStrengthPower(15)).toMatch(/strong/)
+    it("should return includes 'strong' when passing strength=12",()=>{
+        expect(calculateHeroStrengthPower(12)).toMatch(/strong/i)
     })
-    it("should return '25 (strong)' when passing 25",()=>{
-        expect(calculateHeroStrengthPower(25)).toMatch(/unbelievable/)
+    it("should return includes 'unbelievable' when passing strength=30",()=>{
+        expect(calculateHeroStrengthPower(30)).toMatch(/unbelievable/i)
     })
 })
