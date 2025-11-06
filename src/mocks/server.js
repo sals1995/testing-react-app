@@ -4,7 +4,7 @@ import { setupServer } from 'msw/node'
 
 const handlers=[
     http.get('https://api.chucknorris.io/jokes/random',()=>{
-        return new HttpResponse.json({value:"hahaha"})
+        return HttpResponse.json({value:"hahaha"},{status:200})
     }),
     // http.post("",()=> )
 ]

@@ -10,12 +10,12 @@ describe("Joke component", () => {
     render(<JokeFetcher />);
 
     expect(screen.queryByRole("heading")).toHaveTextContent(/loading/i);
-    expect(screen.getByRole("heading")).toHaveTextContent(/haha/) //xxxxx
+    // expect(screen.getByRole("heading")).toHaveTextContent(/haha/) //xxxxx
     //1
     // await waitFor(() => {
     //   expect(screen.queryByRole("heading")).toHaveTextContent(/haha/);
     // });
     //2
-    // expect(await screen.findByRole("heading")).toHaveTextContent(/haha/)
+    expect(await screen.findByRole("heading")).toHaveTextContent(/haha/)
   });
 });
