@@ -4,11 +4,9 @@ import { setupServer } from 'msw/node'
 
 const handlers=[
     http.get('https://api.chucknorris.io/jokes/random',()=>{
-        return HttpResponse.json({ value: "fake joke hahaha" })
+        return new HttpResponse.json({value:"hahaha"})
     }),
-    // http.post("",()=> {})
+    // http.post("",()=> )
 ]
 
-const server=setupServer(...handlers)
-
-export default server
+export const server=setupServer(...handlers)

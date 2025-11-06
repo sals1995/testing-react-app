@@ -10,14 +10,14 @@ const JokeFetcher = () => {
       try {
         const response = await axios.get('https://api.chucknorris.io/jokes/random');
         setJoke(response.data.value);
-      } catch {
-        setError('Failed to fetch joke');
+      } catch (error){
+        setError(error);
       }
     };
     fetchJoke();
   }, []);
 
-  if (error) return <h1>{error}</h1>;
+  if (error) return <h1>{error.message}</h1>;
   return <h1 style={{fontSize:"20px"}}>{joke || 'Loading...'}</h1>;
 };
 
