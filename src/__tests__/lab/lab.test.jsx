@@ -8,7 +8,7 @@ describe('formatPrice function', () => {
 describe('HeroesFromAPI component', () => {
   test('should renders "No heroes available" when API returns empty list',()=>{});
   test('should renders heroes fetched from API', () => {});
-  it.skip('Bonus: Try to check that component should renders an error if response has status 500', () => {});
+  test.skip('Bonus: Try to check that component should renders an error if response has status 500', () => {});
 });
 describe('Status component', () => {
   test('should renders "🔴 Offline" and button',()=>{});
